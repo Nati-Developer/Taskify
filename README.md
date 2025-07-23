@@ -112,7 +112,7 @@ npm install
 
 4. **Start the server**
 ```bash
-npm run dev  # For development with Nodemon
+nodemon app.js  # For development with Nodemon
 # or
 node app.js  # For production
 ```
