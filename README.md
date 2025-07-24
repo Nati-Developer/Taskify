@@ -1,290 +1,219 @@
-# ✅ Taskify API – Your Task Management Powerhouse
+ 🚀 Taskify API – Your Ultimate Task Management Solution
 
-Welcome to **Taskify**, a slick and secure **RESTful API** for managing tasks, built with:
+Welcome to **Taskify**, a robust and secure **RESTful API** for seamless task management, built with modern technologies:
 
-- 🚀 **Node.js + Express.js** for a rock-solid backend
-- 🔐 **JWT** for secure authentication
-- 🔒 **bcrypt** for bulletproof password hashing
-- 🗃️ **MySQL** for storing all your data
-- 
+- **Node.js + Express.js** - Blazing fast backend
+- **JWT Authentication** - Enterprise-grade security
+- **Bcrypt Hashing** - Military-grade password protection
+- **MySQL Database** - Reliable data storage
+- **Postman Tested** - Ready for integration
 
-Perfect for task tracking, personal projects, or showing off your skills to potential employers! 💼
+Ideal for developers, productivity apps, or showcasing your full-stack skills! 💻
 
 ---
 
 ## 📚 Table of Contents
 
-- [📌 What’s Taskify?](#-whats-taskify)
-- [✨ Features](#-features)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📂 How’s It Organized?](#-hows-it-organized)
-- [⚙️ Setup Guide](#-setup-guide)
-- [🔐 Auth Endpoints](#-auth-endpoints)
-- [📝 Task Endpoints](#-task-endpoints)
-- [📁 `.env` Example](#-env-example)
-- [🗃️ Database Setup](#️-database-setup)
-- [📬 Postman Testing](#-postman-testing)
-- [🚨 Error Handling](#-error-handling)
-- [🙌 Credits](#-credits)
+1. [🌟 Key Features](#-key-features)
+2. [🛠 Tech Stack](#-tech-stack)
+3. [📂 Project Structure](#-project-structure)
+4. [⚡ Quick Start](#-quick-start)
+5. [🔐 Authentication API](#-authentication-api)
+6. [📝 Tasks API](#-tasks-api)
+7. [👤 User Profile API](#-user-profile-api)
+8. [⚙ Environment Configuration](#-environment-configuration)
+9. [🗃 Database Schema](#-database-schema)
+10. [🔍 Postman Testing Guide](#-postman-testing-guide)
+11. [🚦 Error Reference](#-error-reference)
+12. [🙌 Acknowledgments](#-acknowledgments)
 
 ---
 
-## 📌 What’s Taskify?
+## 🌟 Key Features
 
-**Taskify** is your go-to API for managing tasks with ease. It lets users:
-
-- 🧑‍💻 Sign up, log in, and get a secure token
-- 📋 Create, view, update, and delete tasks
-- 👤 Manage their profile like a pro
-
-Everything’s locked down with **JWT** for security, and passwords are safely hashed with **bcrypt**. Ready to scale for real-world apps!
-
----
-
-## ✨ Features
-
-- 🔒 Secure login with JWT tokens
-- ✅ Create, read, update, and delete tasks
-- 👤 Update or delete user profiles
-- 🧼 Clean, modular code structure
-- 🚨 Smart error handling for smooth UX
-- 📊 Easy-to-use database schema
+- **Secure Authentication System**
+  - JWT token-based authorization
+  - Password hashing with bcrypt
+- **Full CRUD Functionality**
+  - Create, read, update, delete tasks
+  - User profile management
+- **Optimized Architecture**
+  - MVC pattern implementation
+  - Modular route handling
+  - Centralized error management
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-| Tool         | What It Does                   |
-|--------------|--------------------------------|
-| Node.js      | Powers the backend             |
-| Express.js   | Handles API routes             |
-| MySQL        | Stores users and tasks         |
-| Sequelize/mysql2 | Talks to the database       |
-| bcrypt       | Keeps passwords super safe     |
-| JWT          | Locks down routes with tokens  |
-| dotenv       | Manages environment variables  |
-| Nodemon      | Auto-restarts during dev       |
+| Component       | Technology       | Purpose                          |
+|-----------------|------------------|----------------------------------|
+| Runtime         | Node.js v18+     | JavaScript execution environment |
+| Framework       | Express.js       | Web application framework        |
+| Database        | MySQL            | Relational data storage          |
+| ORM/Driver      | Sequelize/mysql2 | Database interaction            |
+| Security        | JWT, bcrypt      | Authentication & authorization  |
+| Development     | Nodemon          | Auto-reload for development      |
 
 ---
 
-## 📂 How’s It Organized?
-
-Here’s the folder structure to keep things tidy:
+## 📂 Project Structure
 
 ```
-Taskify/
-├── controllers/          # Business logic
-│   ├── authController.js # User auth stuff
-│   └── taskController.js # Task CRUD stuff
-│   └── userController.js # Task CRUD stuff
-├── routes/               # API routes
-│   ├── authRoutes.js     # Auth endpoints
-│   └── taskRoutes.js     # Task endpoints
-│   └── userRoutes.js     # Task endpoints
+taskify-api/
+├── controllers/          # Business logic handlers
+│   ├── auth.controller.js
+│   ├── task.controller.js
+│   └── user.controller.js
+├── routes/               # API endpoint definitions
+│   ├── auth.routes.js
+│   ├── task.routes.js
+│   └── user.routes.js
 ├── middleware/           # Custom middleware
-│   └── authMiddleware.js # JWT protection
-├── config/               # DB connection
-│   └── db.js
+│   └── auth.middleware.js
+├── config/               # Configuration files
+│   └── db.config.js
 ├── .env                  # Environment variables
-├── app.js                # Main app entry
-└── package.json          # Dependencies & scripts
+├── app.js                # Application entry point
+└── package.json          # Dependency management
 ```
 
 ---
 
-## ⚙️ Setup Guide
+## ⚡ Quick Start
 
-Get **Taskify** up and running in a few steps:
-
-1. **Clone the repo**
-```bash
-git clone https://github.com/Nati-Developer/Taskify.git
-cd Taskify
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Nati-Developer/Taskify.git
+   cd Taskify
+   ```
 
 2. **Install dependencies**
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. **Set up your `.env` file**
-   Check out the [`.env` example](#-env-example) below and add your details.
+3. **Configure environment**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your credentials
+   ```
 
-4. **Start the server**
-```bash
-nodemon app.js  # For development with Nodemon
-# or
-node app.js  # For production
-```
-
-> **Pro tip**: Make sure your MySQL server is running!
-
----
-
-## 🔐 Auth Endpoints
-
-**Base URL:** `/api/users`
-
-| Method | Endpoint       | Needs Token? | What It Does                  |
-|--------|----------------|-------------|-------------------------------|
-| POST   | `/register`    | ❌           | Sign up a new user            |
-| POST   | `/login`       | ❌           | Log in and get a JWT token    |
-| GET    | `/profile`     | ✅           | View user profile             |
-| PUT    | `/profile`     | ✅           | Update name or email          |
-| DELETE | `/profile`     | ✅           | Delete user and their tasks   |
-
-> **For protected routes (✅)**, add this header:
-```
-Authorization: Bearer <your_jwt_token>
-```
+4. **Launch the application**
+   ```bash
+   npm run dev  # Development mode (with hot reload)
+   # OR
+   npm start    # Production mode
+   ```
 
 ---
 
-## 📝 Task Endpoints
+## 🔐 Authentication API
 
-**Base URL:** `/api/tasks`
+**Base Path:** `/api/users`
 
-| Method | Endpoint | Needs Token? | What It Does             |
-|--------|----------|-------------|-------------------------|
-| POST   | `/`      | ✅           | Create a new task       |
-| GET    | `/`      | ✅           | List all user’s tasks   |
-| PUT    | `/:id`   | ✅           | Update a task by ID     |
-| DELETE | `/:id`   | ✅           | Delete a task by ID     |
-
----
-
-## 📁 `.env` Example
-
-Create a `.env` file in the root folder and add:
-
-```env
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=taskify_db
-JWT_SECRET=your_super_secret_key
-```
-
-> **Note**: Keep `JWT_SECRET` unique and secure!
+| Method | Endpoint    | Auth Required | Description                  |
+|--------|-------------|---------------|------------------------------|
+| POST   | `/register` | No            | Create new user account      |
+| POST   | `/login`    | No            | Authenticate and get JWT     |
+| GET    | `/profile`  | Yes           | Retrieve user profile        |
+| PUT    | `/profile`  | Yes           | Update profile information   |
+| DELETE | `/profile`  | Yes           | Delete user account          |
 
 ---
 
-## 🗃️ Database Setup
+## 📝 Tasks API
 
-### `users` Table
-| Column   | Type    | Description          |
-|----------|---------|----------------------|
-| id       | INT     | Unique user ID (PK)  |
-| name     | VARCHAR | User’s full name     |
-| email    | VARCHAR | Unique email address |
-| password | VARCHAR | Hashed password      |
+**Base Path:** `/api/tasks`
 
-### `tasks` Table
-| Column      | Type      | Description                |
-|------------|-----------|----------------------------|
-| id         | INT       | Unique task ID (PK)        |
-| user_id    | INT       | Links to user (FK)         |
-| title      | VARCHAR   | Task title                 |
-| completed  | BOOLEAN   | Task status (true/false)   |
-| created_at | TIMESTAMP | When task was created      |
-
-> Run the SQL schema or use Sequelize migrations to set this up.
+| Method | Endpoint | Auth Required | Description                |
+|--------|----------|---------------|----------------------------|
+| POST   | `/`      | Yes           | Create new task            |
+| GET    | `/`      | Yes           | List all user tasks        |
+| GET    | `/:id`   | Yes           | Get specific task          |
+| PUT    | `/:id`   | Yes           | Update task                |
+| DELETE | `/:id`   | Yes           | Delete task                |
 
 ---
 
-## 📬 Postman Testing
+## 🔍 Postman Testing Guide
 
-Test the API with the **Postman collection**!  
-Download it here: [`taskify.postman_collection.json`](#) 
+### Import Collection
+1. Download the Postman collection: [Taskify.postman_collection.json](#)
+2. Import into Postman via File → Import
 
-It includes all endpoints for:
-- User registration/login
-- Profile management
-- Task CRUD operations
+### Environment Setup
+1. Create new Postman environment
+2. Add variables:
+   - `base_url`: `http://localhost:5000/api`
+   - `auth_token` (will be set automatically after login)
 
+### Testing Workflow
+1. **Register New User**
+   - Method: POST
+   - URL: `{{base_url}}/users/register`
+   - Body (raw/JSON):
+     ```json
+     {
+       "name": "Test User",
+       "email": "test@example.com",
+       "password": "secure123",
+       "confirmPassword": "secure123"
+     }
+     ```
 
-📋 Task Endpoints
-Base Path: /tasks
+2. **Login & Get Token**
+   - Method: POST
+   - URL: `{{base_url}}/users/login`
+   - Body:
+     ```json
+     {
+       "email": "test@example.com",
+       "password": "secure123"
+     }
+     ```
+   - *Token will auto-save to environment*
 
-Method	Endpoint	Protected	Description
-POST	/	✅	Create a new task
-GET	/	✅	Get all tasks for the user
-Patch/Put	/:id	✅	Update a task
-DELETE	/:id	✅	Delete a task
-📦 Example JSON Requests
-🔑 Register
-POST /register
-{
-  "name": "NodeHamar",
-  "email": "Nodehamer@gmail.com",
-  "password": "qwerty",
-  "confirmPassword": "qwerty"
-}
-🔑 Login
-POST /login
-{
-  "email": "nodehamer@gmail.com",
-  "password": "qwerty"
-}
-📌 Create Task
-POST /tasks/
-Authorization: Bearer <JWT_TOKEN>
+3. **Create Task**
+   - Method: POST
+   - URL: `{{base_url}}/tasks`
+   - Headers:
+     ```
+     Authorization: Bearer {{auth_token}}
+     ```
+   - Body:
+     ```json
+     {
+       "title": "Complete API testing"
+     }
+     ```
 
-{
-  "name": "First Task"
-}
-
-📌 View Task By Id
-get /tasks/1
-Authorization: Bearer <JWT_TOKEN>
-
-
-📌 View All Task
-get /tasks
-Authorization: Bearer <JWT_TOKEN>
-
-
-
-📌 Update Task
-Patch /tasks/1
-Authorization: Bearer <JWT_TOKEN>
-
-{
-  "status": "Completed"
-}
-
-
-📌 Delete Task
-Delete /tasks/1
-Authorization: Bearer <JWT_TOKEN>
+4. **Test All Endpoints**
+   - The collection includes pre-configured requests for all API operations
+   - Simply select and "Send" each request in sequence
 
 ---
 
-## 🚨 Error Handling
+## 🚦 Error Reference
 
-Errors are returned as JSON for easy frontend handling:
-
-| Code | Meaning               | Why It Happens                     |
-|------|-----------------------|------------------------------------|
-| 400  | Bad Request           | Missing or invalid input           |
-| 401  | Unauthorized          | Invalid or missing JWT token       |
-| 404  | Not Found             | Resource (user/task) doesn’t exist |
-| 500  | Server Error          | Something broke on the server      |
+| Status Code | Error Type         | Resolution Steps                     |
+|-------------|--------------------|--------------------------------------|
+| 400         | Bad Request        | Verify request body/parameters       |
+| 401         | Unauthorized       | Check/refresh JWT token              |
+| 404         | Not Found          | Validate resource ID exists          |
+| 500         | Server Error       | Check server logs and restart        |
 
 ---
 
-## 🙌 Credits
+## 🙌 Acknowledgments
 
-Built with 💪 by Natnael Wosen (Nati)
-- GitHub: [Nati-Developer](https://github.com/Nati-Developer)  
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/Natnael-Wosen)  
-- Email: [natnaelwosen2003@gmail.com](mailto:natnaelwosen2003@gmail.com)  
+Developed with passion by **Natnael Wosen**
 
-> Full-stack dev from 🇪🇹 Ethiopia, passionate about clean code and building cool stuff!
+- 🌍 [Portfolio](https://nati16.com)
+- 💼 [LinkedIn](https://www.linkedin.com/in/Natnael-Wosen)
+- 📧 [Email](mailto:natnaelwosen2003@gmail.com)
+- 🐙 [GitHub](https://github.com/Nati-Developer)
+
+
 
 ---
-
-> *“Code is like art—turn your ideas into something real!”* – Nati
-
-```

@@ -1,6 +1,6 @@
-import pool from '../config/db.js';
+const pool = require('../config/db');
 
-export async function createTask(req, res) {
+async function createTask(req, res) {
   const { name } = req.body;
   if (!name || typeof name !== 'string' || name.length > 255)
     return res.status(400).json({ error: 'Task name is required and must be <= 255 chars' });
@@ -15,7 +15,7 @@ export async function createTask(req, res) {
   }
 }
 
-export async function getTasks(req, res) {
+async function getTasks(req, res) {
   let { page = 1, limit = 10, search = '' } = req.query;
   page = parseInt(page);
   limit = Math.min(parseInt(limit), 100);
@@ -38,7 +38,7 @@ export async function getTasks(req, res) {
   }
 }
 
-export async function updateTaskStatus(req, res) {
+async function updateTaskStatus(req, res) {
   const { status } = req.body;
   if (!['pending', 'completed'].includes(status))
     return res.status(400).json({ error: 'Invalid status' });
@@ -55,7 +55,7 @@ export async function updateTaskStatus(req, res) {
   }
 }
 
-export async function deleteTask(req, res) {
+async function deleteTask(req, res) {
   try {
     const [rows] = await pool.query(
       'SELECT * FROM tasks WHERE id = ? AND userId = ?',
@@ -69,3 +69,9 @@ export async function deleteTask(req, res) {
   }
 }
 
+module.exports = {
+  createTask,
+  getTasks,
+  updateTaskStatus,
+  deleteTask
+};
