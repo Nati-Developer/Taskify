@@ -1,202 +1,203 @@
 
 <h1 align="center">🚀 Taskify API</h1>
-<p align="center"><b>Your Ultimate Task Management Solution</b></p>
+<p align="center"><strong>Enterprise-Ready Task Management Backend Solution</strong></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Node.js-v18+-green" />
-  <img src="https://img.shields.io/badge/Express.js-Fast%20Backend-blue" />
-  <img src="https://img.shields.io/badge/MySQL-Database-orange" />
-  <img src="https://img.shields.io/badge/JWT-Secure%20Auth-yellowgreen" />
-  <img src="https://img.shields.io/badge/Postman-Tested-red" />
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js-v18+-green.svg" /></a>
+  <a href="https://expressjs.com"><img src="https://img.shields.io/badge/Express.js-Backend-blue.svg" /></a>
+  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-Relational DB-orange.svg" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Postman-Tested-red.svg" /></a>
 </p>
 
 ---
 
-### 🎯 Overview
+ 📌 Overview
 
-Welcome to **Taskify**, a robust and secure **RESTful API** for seamless task management, built with modern technologies:
-
-* ⚡ **Node.js + Express.js** – Lightning-fast backend
-* 🔐 **JWT Authentication** – Secure, token-based access
-* 🔑 **Bcrypt** – Military-grade password hashing
-* 🗄 **MySQL Database** – Reliable relational storage
-* 🧪 **Postman Ready** – Fully tested for integration
-
-> Perfect for developers, productivity tools, and full-stack project showcases!
+Taskify is a secure, modular, and scalable RESTful API designed for task management applications. Whether you're building a productivity tool, a learning portfolio, or integrating task features into your SaaS platform, Taskify provides a clean and efficient backend foundation.
 
 ---
 
-## 📚 Table of Contents
+ ⚙️ Key Features
 
-* [🌟 Key Features](#-key-features)
-* [🛠 Tech Stack](#-tech-stack)
-* [📂 Project Structure](#-project-structure)
-* [⚡ Quick Start](#-quick-start)
-* [🔐 Authentication API](#-authentication-api)
-* [📝 Tasks API](#-tasks-api)
-* [🔍 Postman Testing Guide](#-postman-testing-guide)
-* [🚦 Error Reference](#-error-reference)
-* [🙌 Acknowledgments](#-acknowledgments)
+* 🔐 JWT Authentication – Robust, token-based access control
+* 🔑 Bcrypt Security – Passwords encrypted using industry best practices
+* 🧩 Modular Architecture – Clean MVC structure with layered separation
+* 📋 Complete Task Lifecycle – Full CRUD operations on tasks and user data
+* 🔄 Postman-Ready – Comes with a pre-built Postman collection for testing
+* 🧪 Environment Configurable – Easily adaptable to development and production environments
 
 ---
 
-## 🌟 Key Features
+ 🛠 Tech Stack
 
-✅ **Secure Authentication System**
-    🔐 JWT-based auth | 🔑 Password hashing
-
-✅ **Complete CRUD**
-    📌 Task creation, updating, deletion
-    👤 User profile management
-
-✅ **Optimized Architecture**
-    🏗 MVC pattern | 🧩 Modular routes | ⚙ Central error handling
-
----
-
-## 🛠 Tech Stack
-
-| Layer      | Technology         | Purpose                       |
-| ---------- | ------------------ | ----------------------------- |
-| Runtime    | Node.js v18+       | JavaScript engine             |
-| Framework  | Express.js         | Server-side app logic         |
-| Database   | MySQL              | Relational storage            |
-| ORM/Driver | Sequelize / mysql2 | DB communication              |
-| Security   | JWT, bcrypt        | Auth + password hashing       |
-| Dev Tools  | Nodemon            | Hot-reload during development |
+| Category       | Technology         | Description                            |
+| -------------- | ------------------ | -------------------------------------- |
+| Runtime        | Node.js (v18+)     | Backend JavaScript engine              |
+| Framework      | Express.js         | Web framework for routing & middleware |
+| Database       | MySQL              | Structured relational storage          |
+| ORM / Driver   | Sequelize / mysql2 | Simplified DB interaction & migrations |
+| Security       | JWT, bcrypt        | Auth and password encryption           |
+| Dev Experience | Nodemon            | Hot-reload for smooth development      |
 
 ---
 
-## 📂 Project Structure
+ 📁 Project Structure
 
 ```
 taskify-api/
-├── controllers/         # Request handlers
-├── routes/              # Route definitions
-├── middleware/          # Auth checks, error handling
-├── config/              # DB configuration
-├── .env                 # Environment variables
-├── app.js               # App entry point
-└── package.json         # Project metadata
+├── controllers/          # Business logic
+│   ├── auth.controller.js
+│   ├── task.controller.js
+│   └── user.controller.js
+├── routes/               # API route definitions
+│   ├── auth.routes.js
+│   ├── task.routes.js
+│   └── user.routes.js
+├── middleware/           # Custom middleware (e.g., auth)
+│   └── auth.middleware.js
+├── config/               # Configuration files (e.g., DB)
+├── .env                  # Environment variable definitions
+├── app.js                # Application entry point
+└── package.json          # Project metadata & dependencies
 ```
 
 ---
 
-## ⚡ Quick Start
+ 🚀 Getting Started
+
+To get this project up and running locally:
+
+ 1. Clone the Repository
 
 ```bash
-# 1. Clone repo
 git clone https://github.com/Nati-Developer/Taskify.git
 cd Taskify
+```
 
-# 2. Install dependencies
+ 2. Install Dependencies
+
+```bash
 npm install
+```
 
-# 3. Setup environment
+ 3. Configure Environment Variables
+
+Copy the example environment file and modify it:
+
+```bash
 cp .env.example .env
-# → Edit .env with your credentials
+```
 
-# 4. Launch
-npm run dev   # Dev mode
+Update credentials like database URL, JWT secret, etc.
+
+ 4. Start the Application
+
+```bash
+npm run dev     # Development mode with hot reload
 # OR
-npm start     # Production
+npm start       # Production mode
 ```
 
 ---
 
-## 🔐 Authentication API
+ 🔐 Authentication API
 
-📍 **Base Path:** `/api/users`
+Base Path: `/api/users`
 
-| Method | Endpoint    | Auth | Description               |
-| ------ | ----------- | ---- | ------------------------- |
-| POST   | `/register` | ❌    | Register new user         |
-| POST   | `/login`    | ❌    | Login & receive JWT token |
-| GET    | `/profile`  | ✅    | Get current user profile  |
-| PUT    | `/profile`  | ✅    | Update user profile       |
-| DELETE | `/profile`  | ✅    | Delete account            |
-
----
-
-## 📝 Tasks API
-
-📍 **Base Path:** `/api/tasks`
-
-| Method | Endpoint | Auth | Description    |
-| ------ | -------- | ---- | -------------- |
-| POST   | `/`      | ✅    | Create a task  |
-| GET    | `/`      | ✅    | List all tasks |
-| GET    | `/:id`   | ✅    | Get task by ID |
-| PUT    | `/:id`   | ✅    | Update task    |
-| DELETE | `/:id`   | ✅    | Delete task    |
+| Method | Endpoint    | Auth Required | Description                 |
+| ------ | ----------- | ------------- | --------------------------- |
+| POST   | `/register` | ❌             | Register a new user         |
+| POST   | `/login`    | ❌             | Login and receive JWT token |
+| GET    | `/profile`  | ✅             | Fetch authenticated user    |
+| PUT    | `/profile`  | ✅             | Update user details         |
+| DELETE | `/profile`  | ✅             | Remove user account         |
 
 ---
 
-## 🔍 Postman Testing Guide
+ 📝 Tasks API
 
-### 🧩 Import Collection
+Base Path: `/api/tasks`
 
-1. Download: `Taskify.postman_collection.json`
-2. Open Postman → **Import**
+| Method | Endpoint | Auth Required | Description             |
+| ------ | -------- | ------------- | ----------------------- |
+| POST   | `/`      | ✅             | Create a new task       |
+| GET    | `/`      | ✅             | List all user tasks     |
+| GET    | `/:id`   | ✅             | Get a specific task     |
+| PUT    | `/:id`   | ✅             | Update an existing task |
+| DELETE | `/:id`   | ✅             | Delete a task           |
 
-### ⚙ Setup Environment
+---
+
+ 🧪 Postman Testing Guide
+
+ 🔁 Import Collection
+
+* Download the collection: `Taskify.postman_collection.json`
+* Open Postman → Import
+
+ ⚙ Environment Setup
 
 | Variable     | Example                     |
 | ------------ | --------------------------- |
 | `base_url`   | `http://localhost:5000/api` |
-| `auth_token` | Will be saved after login   |
+| `auth_token` | (Auto-filled after login)   |
 
-### 🔁 Testing Workflow
+ 🧪 Sample Workflow
 
-```json
-# Register
-POST /users/register
-{
-  "name": "Test User",
-  "email": "test@example.com",
-  "password": "secure123",
-  "confirmPassword": "secure123"
-}
+1. Register User
+   POST `{{base_url}}/users/register`
 
-# Login
-POST /users/login
-{
-  "email": "test@example.com",
-  "password": "secure123"
-}
+   ```json
+   {
+     "name": "Test User",
+     "email": "test@example.com",
+     "password": "secure123",
+     "confirmPassword": "secure123"
+   }
+   ```
 
-# Create Task
-POST /tasks
-Authorization: Bearer {{auth_token}}
-{
-  "title": "Complete API testing"
-}
-```
+2. Login User
+   POST `{{base_url}}/users/login`
 
-✅ The collection includes all necessary API tests!
+   ```json
+   {
+     "email": "test@example.com",
+     "password": "secure123"
+   }
+   ```
 
----
+3. Create a Task
+   POST `{{base_url}}/tasks` with header:
+   `Authorization: Bearer {{auth_token}}`
 
-## 🚦 Error Reference
-
-| Code | Meaning      | What to Do                   |
-| ---- | ------------ | ---------------------------- |
-| 400  | Bad Request  | Check inputs/body parameters |
-| 401  | Unauthorized | Use/refresh valid JWT token  |
-| 404  | Not Found    | Verify ID or path            |
-| 500  | Server Error | Debug logs or restart server |
+   ```json
+   {
+     "title": "Complete backend integration"
+   }
+   ```
 
 ---
 
-## 🙌 Acknowledgments
+🧾 Error Reference
 
-Made with ❤️ by **Natnael Wosen**
+| Code | Description        | Solution                            |
+| ---- | ------------------ | ----------------------------------- |
+| 400  | Bad Request        | Check required parameters or inputs |
+| 401  | Unauthorized       | Token missing, invalid, or expired  |
+| 404  | Resource Not Found | Verify ID/path correctness          |
+| 500  | Server Error       | Check server logs and API logic     |
 
-* 🌐 [nati16.com](https://nati16.com)
-* 💼 [LinkedIn](https://www.linkedin.com/in/Natnael-Wosen)
-* 📧 [Email](mailto:natnaelwosen2003@gmail.com)
+---
+
+ 🙌 Acknowledgments
+
+Crafted with care by [Natnael Wosen](https://nati16.com)
+Passionate Full-Stack Developer | API Architect | Open-Source Contributor
+
+* 🌐 [Website](https://nati16.com)
+* 💼 [LinkedIn](https://linkedin.com/in/Natnael-Wosen)
 * 🐙 [GitHub](https://github.com/Nati-Developer)
+* 📧 [Email](mailto:natnaelwosen2003@gmail.com)
 
----
 
-Let me know if you want to turn this into a **GitHub Pages project site** or include a **live demo frontend**!
+ © 2025 — Taskify API by Natnael Wosen.
