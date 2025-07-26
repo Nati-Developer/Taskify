@@ -1,6 +1,3 @@
-Here's a beautifully **styled** version of your README using **GitHub-flavored Markdown**, emoji headers, badges, and cleaner visual hierarchy. This will make it more **professional, attractive, and easy to scan** for developers:
-
----
 
 <h1 align="center">🚀 Taskify API</h1>
 <p align="center"><b>Your Ultimate Task Management Solution</b></p>
